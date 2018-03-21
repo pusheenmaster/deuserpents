@@ -27,6 +27,7 @@ public class FenetreGraphiqueProjet extends JFrame{
      
 		// Terrain materialise le labyrinthe, elle remplace le panneau blanc de la fenêtre
 		GrilleBloblo leTerrain = new GrilleBloblo();
+		leTerrain.Commencer();
         cadrePrincipal.add(leTerrain, BorderLayout.CENTER);
 
           //Rendre la fenêtre visible
