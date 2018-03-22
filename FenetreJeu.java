@@ -29,6 +29,11 @@ public class FenetreJeu extends JFrame{
 		GrilleJeu leTerrain = new GrilleJeu();
 		leTerrain.Commencer();
         cadrePrincipal.add(leTerrain, BorderLayout.CENTER);
+        
+    /*    //methode
+        public GrilleJeu getGrille(){
+			return leTerrain ;
+		} */                //   Pour recup la Grille quon utilise, puis coord dans Grille
 
           //Rendre la fenêtre visible
         this.setVisible(true);

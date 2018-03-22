@@ -20,11 +20,16 @@ public class GrilleJeu extends JPanel{
 	public int getLarg(){
 		return getWidth();
 	}
+	    // Variables de la partie
+		private Joueur r;
+   // public Joueur getJoueur() {return r;}
+   // public int[][]    getCarte()      {return CARTE;}
     
     	
     // constructeur
     	public GrilleJeu (){
 		tab = new int[ligne][colonne];
+		r=new Joueur(1,"Jojo",Color.BLUE);
 	}
 
    // public static final int CASE_VIDE     = 0;
@@ -90,7 +95,7 @@ public class GrilleJeu extends JPanel{
              listItem.get(i).dessiner(g,larg,haut);
         }*/
 
-       // r.dessiner(g,larg,haut);
+       r.dessiner(g,22,30);
     }
 	}
 
