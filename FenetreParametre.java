@@ -49,13 +49,19 @@ public class FenetreParametre extends JFrame {
 		
 		choix1 = new JLabel ("Color of player 1:");
 		bleu1 = new JButton ("blue");	//choix couleur trainée j1
+		bleu1.setBackground(Color.BLUE);
 		rouge1 = new JButton ("rouge");
+		rouge1.setBackground(Color.RED);
 		vert1 = new JButton ("vert");
+		vert1.setBackground(Color.GREEN);
 		
 		choix2 = new JLabel ("Color of player 2:");
 		bleu2 = new JButton ("blue");  //choix couleur trainée j2
+		bleu2.setBackground(Color.BLUE);
 		rouge2 = new JButton ("rouge");
+		rouge2.setBackground(Color.RED);
 		vert2 = new JButton ("vert");
+		vert2.setBackground(Color.GREEN);
 		
 		choixFond = new JLabel ("Color of the background:"); // choix couleur fond du jeu
 		black = new JButton ("Black");
@@ -70,6 +76,7 @@ public class FenetreParametre extends JFrame {
 		cadrePrincipal.setLayout(null);
 		JPanel paraj1 = new JPanel(new GridLayout(6,1));
 		JPanel paraj2 = new JPanel(new GridLayout(6,1));
+		JPanel paraj3 = new JPanel(new GridLayout(1,5));
 		
 		paraj1.add(j1);
 		paraj1.add(nom1);
@@ -77,13 +84,12 @@ public class FenetreParametre extends JFrame {
 		paraj1.add(bleu1);
 		paraj1.add(rouge1);
 		paraj1.add(vert1);
+		
 		paraj1.setBackground(Color.PINK);
-		
-		paraj1.setBounds(0,0, 200, 600);
-		
+		paraj1.setBounds(100,50, 150, 400);
 		cadrePrincipal.add(paraj1);
 		
-		/*paraj2.add(j2);
+		paraj2.add(j2);
 		paraj2.add(nom2);
 		paraj2.add(choix2);
 		paraj2.add(bleu2);
@@ -91,22 +97,30 @@ public class FenetreParametre extends JFrame {
 		paraj2.add(vert2);
 		
 		paraj2.setBackground(Color.PINK);
+		paraj2.setBounds(500,50, 150, 400);
+		cadrePrincipal.add(paraj2);
 		
-		cadrePrincipal.add(paraj1, BorderLayout.WEST);
-		cadrePrincipal.add(paraj2, BorderLayout.EAST);
+		paraj3.add(choixFond);
+		paraj3.add(black);
+		paraj3.add(gray);
+		paraj3.add(pink);
 		
-		/*cadrePrincipal.add(nomjeu, BorderLayout.SOUTH);
-		cadrePrincipal.add(rules, BorderLayout.SOUTH);*/
+		paraj3.setBackground(Color.PINK);
+		paraj3.setBounds(100, 500, 500, 75);
+		cadrePrincipal.add(paraj3);
 		
-		/*cadrePrincipal.add(black, BorderLayout.SOUTH);
-		cadrePrincipal.add(gray, BorderLayout.SOUTH);
-		cadrePrincipal.add(pink, BorderLayout.SOUTH);*/
 		
 		setContentPane(cadrePrincipal);
 		
 		setVisible(true);
 	}	
-		
+	
+	public void creerJoueur(int num, String nom, Color couleur){
+		//a completer
+		//plutot return joueur 
+	}
+	
+	public void lancerFenetreJeu(	
 	
 	
 }
