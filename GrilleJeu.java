@@ -5,7 +5,7 @@ import java.util.*;
 
 public class GrilleJeu extends JPanel{
 	private final int[][] tab; 		//tableau de boolean
-	private int colonne = 55;
+	private int colonne = 30;
 	private int ligne = 30;
     
     private int pL = 800;
@@ -20,8 +20,18 @@ public class GrilleJeu extends JPanel{
 	public int getLarg(){
 		return getWidth();
 	}
+	
+	public int getNbColonnes(){
+		return colonne ;
+	}
+	
+	public int getNbLignes(){
+		return ligne ;
+	}
+	
 	    // Variables de la partie
-		private Joueur r;
+	private Joueur r1;
+	private Joueur r2;
    // public Joueur getJoueur() {return r;}
    // public int[][]    getCarte()      {return CARTE;}
     
@@ -29,7 +39,8 @@ public class GrilleJeu extends JPanel{
     // constructeur
     	public GrilleJeu (){
 		tab = new int[ligne][colonne];
-		r=new Joueur(1,"Jojo",Color.BLUE);
+		r1=new Joueur(1,"Jojo",Color.BLUE,this);
+		r2=new Joueur(2,"Pat",Color.RED,this);
 	}
 
    // public static final int CASE_VIDE     = 0;
@@ -60,6 +71,15 @@ public class GrilleJeu extends JPanel{
         return message; 
     }
 	
+	public int getLargeurCase(){
+		int a=this.getLarg()/colonne;
+		return a;
+	}
+	
+	public int getHauteurCase(){
+		int a=this.getHaut()/ligne;
+		return a;
+	}
 
     
     
@@ -86,16 +106,13 @@ public class GrilleJeu extends JPanel{
                 } else if(tab[i][j]==1) {
                  g.setColor(Color.BLACK);
                  g.fillRect(x1,y1,l,h);
-			 }
+				}
 
             }			
-        }
+       }
 
-        /*for(int i=0;i<listItem.size();i++) {
-             listItem.get(i).dessiner(g,larg,haut);
-        }*/
-
-       r.dessiner(g,22,30);
+       r1.dessiner(g,larg,haut);
+       r2.dessiner(g,larg,haut);
     }
 	}
 

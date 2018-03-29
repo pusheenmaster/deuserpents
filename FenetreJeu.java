@@ -10,7 +10,8 @@ public class FenetreJeu extends JFrame{
 		//on definit le nom de la fenetre
         super("Fenêtre Graphique Projet");
         //Dimensions de la fenetre graphique et fermeture
-        this.setSize(900,550);
+        this.setSize(700,700);
+        this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         //Création des éléments visibles sur la fenetre
