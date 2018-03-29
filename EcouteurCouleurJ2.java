@@ -3,14 +3,14 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
-public class EcouteurCouleurJ1 implements ActionListener{
+public class EcouteurCouleurJ2 implements ActionListener{
 	private Color couleur;
 	
-	public EcouteurCouleurJ1(Color c){
+	public EcouteurCouleurJ2(Color c){
 		couleur=c;
 	}	
 	
 	public void actionPerformed(ActionEvent E){
-		FenetreParametre.creerJoueur1(couleur);
+		FenetreParametre.creerJoueur2(couleur);
 	}	
 }

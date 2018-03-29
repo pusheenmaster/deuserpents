@@ -82,8 +82,11 @@ public class FenetreParametre extends JFrame {
 		paraj1.add(nom1);
 		paraj1.add(choix1);
 		paraj1.add(bleu1);
+		bleu1.addActionListener(new EcouteurCouleurJ1(Color.BLUE));
 		paraj1.add(rouge1);
+		rouge1.addActionListener(new EcouteurCouleurJ1(Color.RED));
 		paraj1.add(vert1);
+		vert1.addActionListener(new EcouteurCouleurJ1(Color.GREEN));
 		
 		paraj1.setBackground(Color.PINK);
 		paraj1.setBounds(100,50, 150, 400);
@@ -93,8 +96,11 @@ public class FenetreParametre extends JFrame {
 		paraj2.add(nom2);
 		paraj2.add(choix2);
 		paraj2.add(bleu2);
+		bleu1.addActionListener(new EcouteurCouleurJ2(Color.BLUE));
 		paraj2.add(rouge2);
+		rouge1.addActionListener(new EcouteurCouleurJ2(Color.RED));
 		paraj2.add(vert2);
+		vert1.addActionListener(new EcouteurCouleurJ2(Color.GREEN));
 		
 		paraj2.setBackground(Color.PINK);
 		paraj2.setBounds(500,50, 150, 400);
@@ -115,13 +121,23 @@ public class FenetreParametre extends JFrame {
 		setVisible(true);
 	}	
 	
-	public void creerJoueur(int num, String nom, Color couleur){
-		//a completer
-		//plutot return joueur 
+	public static Joueur creerJoueur1(Color couleur){
+		Color c = couleur;
+		//Joueur j1 = new Joueur(1, nom1, c, grille);
+		Joueur j1 = new Joueur(1, "zdf", Color.BLACK);
+		return j1;
 	}
 	
-	public void lancerFenetreJeu(	
+	public static Joueur creerJoueur2(Color couleur){
+		Color c = couleur;
+		//Joueur j1 = new Joueur(1, nom1, c, grille);
+		Joueur j2 = new Joueur(1, "zdf", Color.BLACK);
+		return j2;
+	}
+	
+	public void lancerFenetreJeu(){
+		new GrilleJeu(); 
+		}
 	
 	
-}
 
