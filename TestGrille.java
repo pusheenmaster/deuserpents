@@ -1,3 +1,8 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.util.*;
+
 public class TestGrille{
 	
 	public static void main(String[] args){
@@ -9,7 +14,9 @@ public class TestGrille{
 		
 		FenetreJeu f = new FenetreJeu();
 		//System.out.println("longueur "+f.getLongueur()+"largeur"+f.getLargeur());  // je veux recuperer les dimensions du panneau central
-    }
+	}
+		
+    
 		
 		
 

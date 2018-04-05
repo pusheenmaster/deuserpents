@@ -28,6 +28,8 @@ public class FenetreJeu extends JFrame{
      
 		// Terrain materialise le labyrinthe, elle remplace le panneau blanc de la fenêtre
 		GrilleJeu leTerrain = new GrilleJeu();
+		addKeyListener(leTerrain);
+		
 		leTerrain.Commencer();
         cadrePrincipal.add(leTerrain, BorderLayout.CENTER);
         

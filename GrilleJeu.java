@@ -3,16 +3,16 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
-public class GrilleJeu extends JPanel{
+public class GrilleJeu extends JPanel implements KeyListener, ActionListener{
 	private final int[][] tab; 		//tableau de boolean
 	private int colonne = 30;
 	private int ligne = 30;
     
-    private int pL = 800;
-	private int pH = 350;
 	
 	int haut = getHeight();
     int larg = getWidth();
+    
+    private javax.swing.Timer t;
     
     public int getHaut(){
 		return getHeight();
@@ -41,10 +41,12 @@ public class GrilleJeu extends JPanel{
 		tab = new int[ligne][colonne];
 		r1=new Joueur(1,"Jojo",Color.BLUE,this);
 		r2=new Joueur(2,"Pat",Color.RED,this);
+		
+		t = new javax.swing.Timer(300, this);
+		t.start();
 	}
 
-   // public static final int CASE_VIDE     = 0;
-  //  public static final int CASE_OBSTACLE = 1;
+
 			
 	//RecommenceApresPerteVie
 	public void Commencer(){
@@ -54,7 +56,7 @@ public class GrilleJeu extends JPanel{
 				if(i==0 || j ==0 || i==ligne-1 || j==colonne-1){
 					tab[i][j] = 1;	
 					}
-										// on le remplit de cases vides. Une case vide a la valeur 0
+										
 			}
 		}
 	}
@@ -110,10 +112,89 @@ public class GrilleJeu extends JPanel{
 
             }			
        }
-
        r1.dessiner(g,larg,haut);
        r2.dessiner(g,larg,haut);
+       
     }
+    ///pour clavier vk event ESSAIE DEPLACEMENT
+	public void keyPressed(KeyEvent evt) {      
+	int c = evt.getKeyCode();
+	
+	System.out.println("c=" +c);
+    
+    //deplacement j1
+    if (c == KeyEvent.VK_UP) {
+        r1.deplacer(0, -1);
+        r1.changDirection(8);
+    }
+      if (c == KeyEvent.VK_DOWN) {
+        r1.deplacer(0, 1);
+        r1.changDirection(2);
+    }
+      if (c == KeyEvent.VK_RIGHT) {
+        r1.deplacer(1, 0);
+        r1.changDirection(6);
+    }
+      if (c == KeyEvent.VK_LEFT) {
+        r1.deplacer(-1, 0);
+		r1.changDirection(4);        
+    }
+    
+    //deplacement j2
+    if (c == KeyEvent.VK_Z) {
+        r2.deplacer(0, -1);
+        r2.changDirection(8);
+        
+    }
+      if (c == KeyEvent.VK_S) {
+        r2.deplacer(0, 1);
+         r2.changDirection(2);
+    }
+      if (c == KeyEvent.VK_D) {
+        r2.deplacer(1, 0);
+         r2.changDirection(6);
+    }
+      if (c == KeyEvent.VK_Q) {
+        r2.deplacer(-1, 0);
+         r2.changDirection(4);
+    }
+    
+    //this.repaint();
 	}
+	
+	public void keyReleased(KeyEvent evt){}
+	
+	public void keyTyped(KeyEvent evt){}
+	
+	public void actionPerformed(ActionEvent e){
+		if(r1.getDirection()==8){
+			r1.deplacer(0,-1);
+		}
+		if(r1.getDirection()==2){
+			r1.deplacer(0,1);
+		}
+		if(r1.getDirection()==6){
+			r1.deplacer(1,0);
+		}
+		if(r1.getDirection()==4){
+			r1.deplacer(-1,0);
+		}
+		
+		if(r2.getDirection()==8){
+			r2.deplacer(0,-1);
+		}
+		if(r2.getDirection()==2){
+			r2.deplacer(0,1);
+		}
+		if(r2.getDirection()==6){
+			r2.deplacer(1,0);
+		}
+		if(r2.getDirection()==4){
+			r2.deplacer(-1,0);
+		}
+			
+		this.repaint();
+	}
+}
 
 	

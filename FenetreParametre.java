@@ -139,5 +139,5 @@ public class FenetreParametre extends JFrame {
 		new GrilleJeu(); 
 		}
 	
-	
+}
 

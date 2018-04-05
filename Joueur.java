@@ -13,6 +13,8 @@ public class Joueur {
 	private int y ;
 	private GrilleJeu terrain ;
 	
+	private int direction;
+	
 	int xDepart = 0 ;
 	int yDepart = 0 ;
 	//int vitesseInitiale = 50 ;
@@ -27,10 +29,12 @@ public class Joueur {
 			System.out.println("ok joueur 1");
 			yDepart = 0 ;
 			xDepart = (int)((Math.random())*(terrain.getNbColonnes())+1);
+			this.direction = 2; //vers le bas
 		} else {
 			System.out.println("ok joueur 2");
 			yDepart = terrain.getNbLignes()-1 ;
 			xDepart = (int)((Math.random())*(terrain.getNbColonnes())+1);
+			this.direction = 8; //vers le haut
 		}
 		x=xDepart;
 		y=yDepart;
@@ -57,26 +61,15 @@ public class Joueur {
 		return couleur ;
 	}
 	
-	///pour clavier vk event ESSAIE DEPLACEMENT
-	private void passwordTFKeyTyped(java.awt.event.KeyEvent evt) {      
-	char c = evt.getKeyChar();
-
-    if (c == KeyEvent.VK_UP) {
-        deplacer(0, -1);
-    }
-      if (c == KeyEvent.VK_DOWN) {
-        deplacer(0, 1);
-    }
-      if (c == KeyEvent.VK_RIGHT) {
-        deplacer(1, 0);
-    }
-      if (c == KeyEvent.VK_LEFT) {
-        deplacer(-1, 0);
-    }
+	public void changDirection(int nDir){
+		direction=nDir;
 	}
+	
+	public int getDirection(){
+		return direction;
+	}	
+}		
+	
+	
 
 
-
-
-
-}
