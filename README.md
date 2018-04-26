@@ -1,2 +1,0 @@
-# deuserpents
-Projet Info
