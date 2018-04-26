@@ -8,6 +8,9 @@ public class FenetreJeu extends JFrame {
 	int dimTerrain = 800;
 	private GrilleJeu leTerrain;
 	
+	// Le Manager des HighScores
+	HighscoreManager hm = new HighscoreManager();
+	
 	private int nbrJ;
 	private String nom1;
 	private String nom2;
@@ -61,6 +64,12 @@ public class FenetreJeu extends JFrame {
 		ps.setBounds(5, 10, 180, 500);
 		cadrePrincipal.add(ps);
 		
+		//ajout des scores test
+		hm.addScore("Nicu", 240);
+		hm.addScore("Amelie",300);
+ 	        hm.addScore("Pierre",160);
+        	hm.addScore("Alexis",280);
+		
         //setContentPane(cadrePrincipal);
       
         setVisible(true);
@@ -80,6 +89,11 @@ public class FenetreJeu extends JFrame {
 		t.start();
 	}		  
 	
+	private void drawString(Graphics g, String text, int x, int y) {
+        for (String line : text.split("\n"))
+            g.drawString(line, x, y += g.getFontMetrics().getHeight());
+	}
+	
 	public void paintComponent(Graphics g){
 		
 		super.paintComponent(g);
@@ -96,6 +110,9 @@ public class FenetreJeu extends JFrame {
 
 		g.drawString (nom2, 20, 250);
 		g.drawString ("Score= "+leTerrain.returnScoreJoueur(2), 20, 280);
+		
+		g.setFont(new Font("Arial",Font.PLAIN,14));
+		drawString (g, hm.getHighscoreString(), 20, 380);
 		
 		if(leTerrain.getNbJoueurs()==3){
 			g.drawString (nom3, 20, 350);
