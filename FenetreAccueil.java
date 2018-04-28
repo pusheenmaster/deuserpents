@@ -9,7 +9,7 @@ public class FenetreAccueil extends JFrame{
 	private JLabel bienvenue;
 	//pour les joueurs
 	private JLabel choixNbrJoueurs;
-	private JPanel centrerChoixNbrJoueurs;
+	private JPanel centrerChoixNbrJoueurs;		//juste pour centrer le JLabel dans le cadreColonne, sinon il se colle à droite
 	private JPanel nbrJoueurs;
 	private JButton deuxJoueurs;
 	private JButton troisJoueurs;
@@ -54,7 +54,7 @@ public class FenetreAccueil extends JFrame{
 		bienvenue.setFont(police);	 							//On l'applique au JLabel
         cadreColonne.add(bienvenue);
         
-        centrerChoixNbrJoueurs = new JPanel(new FlowLayout());   //
+        centrerChoixNbrJoueurs = new JPanel(new FlowLayout());   //Pour que le JLabel soit centre
         choixNbrJoueurs = new JLabel("Nombre de joueurs :");
         centrerChoixNbrJoueurs.add(choixNbrJoueurs);
         cadreColonne.add(centrerChoixNbrJoueurs);
@@ -114,15 +114,7 @@ public class FenetreAccueil extends JFrame{
 		centrerGo.add(go);
 		go.addActionListener(new EcouteurGo());
 		
-		
-	
-	//	cadreColonne.add(nbrJoueurs);
-		//on a selectionné le nbr de joueurs
-
-      
-	//	  this.repaint();
-        //Rendre la fenêtre visible
-        this.setVisible(true);
+		this.setVisible(true);
 	}
 
 	class EcouteurDeuxJoueurs implements ActionListener{			    
@@ -164,7 +156,7 @@ public class FenetreAccueil extends JFrame{
 	class EcouteurLent implements ActionListener{			    
 			public void actionPerformed(ActionEvent e){
 				System.out.println("Vous avez choisi la vitesse lente.");
-				cadreColonne.add(go);
+				cadreColonne.add(centrerGo);
 				ms = 100;
 				revalidate();
 			}
