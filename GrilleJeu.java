@@ -270,6 +270,28 @@ public class GrilleJeu extends JPanel implements KeyListener, ActionListener{
 				resultat = r3.getScore();	
 		}
 		return resultat;	
+	}
+	
+	public boolean finDuJeu(){
+		boolean end = false;
+		if(r1.getScore()==5 || r2.getScore()==5)
+			end=true;
+		if(nbrJoueur==3){
+			if(r3.getScore()==5)
+				end=true;
+		}		
+		return end;
+	}
+	
+	public String nomJoueurWin(){
+		String gagnant = "";
+		if(r1.getScore()==5)
+			gagnant = r1.getNom();
+		if(r2.getScore()==5)
+			gagnant = r2.getNom();	
+		if(r3.getScore()==5)
+			gagnant = r3.getNom();
+		return gagnant;
 	}		
 			
 }
