@@ -63,13 +63,7 @@ public class FenetreJeu extends JFrame {
 		ps.setBackground(Color.WHITE);
 		ps.setBounds(5, 10, 180, 500);
 		cadrePrincipal.add(ps);
-		
-		//ajout des scores test
-		hm.addScore("Nicu", 240);
-		hm.addScore("Amelie",300);
- 	        hm.addScore("Pierre",160);
-        	hm.addScore("Alexis",280);
-		
+
         //setContentPane(cadrePrincipal);
       
         setVisible(true);
@@ -111,13 +105,15 @@ public class FenetreJeu extends JFrame {
 		g.drawString (nom2, 20, 250);
 		g.drawString ("Score= "+leTerrain.returnScoreJoueur(2), 20, 280);
 		
-		g.setFont(new Font("Arial",Font.PLAIN,14));
-		drawString (g, hm.getHighscoreString(), 20, 380);
-		
 		if(leTerrain.getNbJoueurs()==3){
 			g.drawString (nom3, 20, 350);
 			g.drawString ("Score= "+leTerrain.returnScoreJoueur(3), 20, 380);
 		}
+		
+		g.setFont(new Font("Arial",Font.PLAIN,17));
+		drawString (g, "Nombre de fois gagne:", 10, 380);
+		g.setFont(new Font("Arial",Font.PLAIN,14));
+		drawString (g, hm.getHighscoreString(), 20, 410);
 	}	
 	
 	public void actionPerformed(ActionEvent e){

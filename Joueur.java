@@ -189,6 +189,8 @@ public class Joueur {
 		}
 	}
 	
+	
+	
 	public void resetTrainee(){
 		
 		x=xDepart;
