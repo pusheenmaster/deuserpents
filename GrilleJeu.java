@@ -49,8 +49,11 @@ public class GrilleJeu extends JPanel implements KeyListener, ActionListener{
 			}
 			
 		t = new javax.swing.Timer(ms, this);
-		t.start();
 	}
+	
+	public void startGame(){
+		t.start();
+	}	
     
     public int getHaut(){
 		return getHeight();
@@ -102,7 +105,7 @@ public class GrilleJeu extends JPanel implements KeyListener, ActionListener{
             int l = (j+1)*larg/tab[0].length-x1;
                              
                 if(tab[i][j]==null) {
-                  //g.setColor(Color.GREEN);
+                  //g.setColor(Color.GRAY);
                   //g.drawRect(x1,y1,l,h);
          
                 } else if(tab[i][j]!=null) {
@@ -128,70 +131,52 @@ public class GrilleJeu extends JPanel implements KeyListener, ActionListener{
     
     ///pour clavier DEPLACEMENT
 	public void keyPressed(KeyEvent evt) {      
-	int c = evt.getKeyCode();
+		int c = evt.getKeyCode();
     
-    ///deplacement j1
-    if (c == KeyEvent.VK_UP && r1.getDirection()!=8 && r1.getDirection()!=2) {
-        r1.deplacer(0, -1);
-        //r1.depH();
-        r1.changDirection(8);
-    }
-      if (c == KeyEvent.VK_DOWN && r1.getDirection()!=2 && r1.getDirection()!=8) {
-        r1.deplacer(0, 1);
-        //r1.depB();
-        r1.changDirection(2);
-    }
-      if (c == KeyEvent.VK_RIGHT && r1.getDirection()!=6 && r1.getDirection()!=4) {
-        r1.deplacer(1, 0);
-        //r1.depD();
-        r1.changDirection(6);
-    }
-      if (c == KeyEvent.VK_LEFT && r1.getDirection()!=4 && r1.getDirection()!=6) {
-        r1.deplacer(-1, 0);
-        //r1.depG();
-		r1.changDirection(4);        
-    }
+		///deplacement j1
+		if (c == KeyEvent.VK_UP && r1.getDirection()!=8 && r1.getDirection()!=2) 
+			r1.changDirection(8);
     
-    ///deplacement j2
-    if (c == KeyEvent.VK_Z && r2.getDirection()!=8 && r2.getDirection()!=2) {
-        r2.deplacer(0, -1);
-        r2.changDirection(8);
+		if (c == KeyEvent.VK_DOWN && r1.getDirection()!=2 && r1.getDirection()!=8) 
+			r1.changDirection(2);
+    
+		if (c == KeyEvent.VK_RIGHT && r1.getDirection()!=6 && r1.getDirection()!=4) 
+			r1.changDirection(6);
         
-    }
-      if (c == KeyEvent.VK_S && r2.getDirection()!=2 && r2.getDirection()!=8) {
-        r2.deplacer(0, 1);
-         r2.changDirection(2);
-    }
-      if (c == KeyEvent.VK_D && r2.getDirection()!=6 && r2.getDirection()!=4) {
-        r2.deplacer(1, 0);
-         r2.changDirection(6);
-    }
-      if (c == KeyEvent.VK_Q && r2.getDirection()!=4 && r2.getDirection()!=6) {
-        r2.deplacer(-1, 0);
-         r2.changDirection(4);
-    }
+		if (c == KeyEvent.VK_LEFT && r1.getDirection()!=4 && r1.getDirection()!=6)
+			r1.changDirection(4);        
     
-    ///deplacement j3
-    if(nbrJoueur == 3){
-    if (c == KeyEvent.VK_U && r3.getDirection()!=8 && r3.getDirection()!=2) {
-        r3.deplacer(0, -1);
-        r3.changDirection(8);
+    
+		///deplacement j2
+		if (c == KeyEvent.VK_Z && r2.getDirection()!=8 && r2.getDirection()!=2) 
+			r2.changDirection(8);
         
-    }
-      if (c == KeyEvent.VK_J && r3.getDirection()!=2 && r3.getDirection()!=8) {
-        r3.deplacer(0, 1);
-        r3.changDirection(2);
-    }
-      if (c == KeyEvent.VK_K && r3.getDirection()!=6 && r3.getDirection()!=4) {
-        r3.deplacer(1, 0);
-        r3.changDirection(6);
-    }
-      if (c == KeyEvent.VK_H && r3.getDirection()!=4 && r3.getDirection()!=6) {
-        r3.deplacer(-1, 0);
-        r3.changDirection(4);
-    }
+		if (c == KeyEvent.VK_S && r2.getDirection()!=2 && r2.getDirection()!=8) 
+			r2.changDirection(2);
+
+		if (c == KeyEvent.VK_D && r2.getDirection()!=6 && r2.getDirection()!=4) 
+			r2.changDirection(6);
+
+		if (c == KeyEvent.VK_Q && r2.getDirection()!=4 && r2.getDirection()!=6) 
+			r2.changDirection(4);
+  
+		
+		///deplacement j3
+		if(nbrJoueur == 3){
+		if (c == KeyEvent.VK_U && r3.getDirection()!=8 && r3.getDirection()!=2) 
+			r3.changDirection(8);
+        
+		if (c == KeyEvent.VK_J && r3.getDirection()!=2 && r3.getDirection()!=8) 
+			r3.changDirection(2);
+		
+		if (c == KeyEvent.VK_K && r3.getDirection()!=6 && r3.getDirection()!=4) 
+			r3.changDirection(6);
+    
+		if (c == KeyEvent.VK_H && r3.getDirection()!=4 && r3.getDirection()!=6)
+			r3.changDirection(4);
+		}
 	}
-	}
+
 	
 	public void keyReleased(KeyEvent evt){}
 	
@@ -243,25 +228,24 @@ public class GrilleJeu extends JPanel implements KeyListener, ActionListener{
 		for (int i=0; i<win.getTrainee().length; i++){
 				for (int j=0; j<win.getTrainee()[0].length; j++){
 							if(win.getTrainee()[i][j] !=null && (win.getTrainee()[i][j]).getX()==loose.getX() && (win.getTrainee()[i][j]).getY()==loose.getY()){
-								System.out.println("collision joueurs");
+								//System.out.println("collision joueurs");
 								loose.effacerTrainee();
 								loose.resetTrainee();
 								win.setScore();
-								//win.effacerTrainee();
-								//win.resetTrainee();
-								System.out.println("Score de "+win.getNom()+" est egal a "+win.getScore());
+								win.effacerTrainee();
+								win.resetTrainee();
+								//System.out.println("Score de "+win.getNom()+" est egal a "+win.getScore());
 							}		
 					
 				}
 		}
 		
-		for (int k=0; k<win.getTrainee().length; k++){
-				for (int l=0; l<win.getTrainee()[0].length; l++){
-							if(win.getX()==loose.getX() && win.getY()==loose.getY()){
-								win.resetTrainee();
-								loose.resetTrainee();
-							}
-				}
+		///cas où les tetes se croisent
+		if(win.getX()==loose.getX() && win.getY()==loose.getY()){
+				win.effacerTrainee();
+				win.resetTrainee();
+				loose.effacerTrainee();
+				loose.resetTrainee();
 		}						 
 	}
 	
@@ -292,11 +276,13 @@ public class GrilleJeu extends JPanel implements KeyListener, ActionListener{
 	public void remettreZero(){
 		r1.setZero();
 		r2.setZero();
-		if(nbrJoueur == 3) r3.setZero();
-		
+		if(nbrJoueur == 3) 
+			r3.setZero();
 	}
 	
-	public static HighscoreManager getHm() {return hm;}
+	public static HighscoreManager getHm() {
+		return hm;
+	}	
 	
 	public String nomJoueurWin(){
 		String gagnant = "";

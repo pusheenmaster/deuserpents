@@ -8,9 +8,6 @@ public class FenetreJeu extends JFrame {
 	int dimTerrain = 800;
 	private GrilleJeu leTerrain;
 	
-	// Le Manager des HighScores
-
-	
 	private int nbrJ;
 	private String nom1;
 	private String nom2;
@@ -20,15 +17,13 @@ public class FenetreJeu extends JFrame {
 	
 	private Decompte de;
 	
-	int debut=1;
-	
 	private JPanel cadrePrincipal;
 	
 	public FenetreJeu(int nbrJ, String nom1, String nom2, String nom3, int ms){
 		
         super("Fenetre TRON");
         
-        setSize(1200, dimTerrain+50);
+        setSize(1200, dimTerrain+200);
         setResizable(false);
         setLocation(100, 0);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,8 +42,6 @@ public class FenetreJeu extends JFrame {
         de = new Decompte();
 		de.setBackground(Color.WHITE);
 		de.setBounds(5, 10, 180, 500);
-		//System.out.print(de.getDecompte());
-        //cadrePrincipal.add(de);
         setContentPane(de);
  		
 		
@@ -63,8 +56,6 @@ public class FenetreJeu extends JFrame {
 		ps.setBackground(Color.WHITE);
 		ps.setBounds(5, 10, 180, 500);
 		cadrePrincipal.add(ps);
-
-        //setContentPane(cadrePrincipal);
       
         setVisible(true);
 	}
@@ -72,7 +63,6 @@ public class FenetreJeu extends JFrame {
 	
 	
 	///Pour afficher les scores
-	
 	class PanneauScore extends JPanel implements ActionListener{
 			
 			private javax.swing.Timer t;
@@ -82,11 +72,6 @@ public class FenetreJeu extends JFrame {
 			t = new javax.swing.Timer(70, this);
 			t.start();
 		}		  
-		
-		private void drawString(Graphics g, String text, int x, int y) {
-			for (String line : text.split("\n"))
-				g.drawString(line, x, y += g.getFontMetrics().getHeight());
-		}
 		
 		public void paintComponent(Graphics g){
 			
@@ -113,17 +98,25 @@ public class FenetreJeu extends JFrame {
 			g.setFont(new Font("Arial",Font.PLAIN,17));
 			drawString (g, "Nombre de fois gagne:", 10, 380);
 			g.setFont(new Font("Arial",Font.PLAIN,14));
-			drawString (g, GrilleJeu.getHm().getHighscoreString(), 20, 410);
+			drawString (g, GrilleJeu.getHm().getHighscoreString(), 20, 420);
+			
+			g.setColor(Color.BLACK);
+			g.setFont(new Font("Arial",Font.PLAIN,20));
+		
 		}	
 		
 		public void actionPerformed(ActionEvent e){
 			this.repaint();
 		}
+		
+		private void drawString(Graphics g, String text, int x, int y) {
+			for (String line : text.split("\n"))
+				g.drawString(line, x, y += g.getFontMetrics().getHeight());
+		}
 	}
 	
 	
 	///pour décompte lancement jeu
-	
 	class Decompte extends JPanel implements ActionListener{
 		
 		private javax.swing.Timer t;
@@ -140,9 +133,9 @@ public class FenetreJeu extends JFrame {
 		
 		super.paintComponent(g);
 	
-		g.setFont(new Font("Arial",Font.PLAIN,70));
-		g.setColor(Color.RED);
-		g.drawString (""+decompte+" !", 40, 100);
+		g.setFont(new Font("Arial",Font.PLAIN, 100));
+		g.setColor(Color.GRAY);
+		g.drawString (""+decompte+" !", 300, 400);
 		decompte--;
 	}
 	
@@ -151,6 +144,7 @@ public class FenetreJeu extends JFrame {
 		this.repaint();
 		if(decompte==0){
 			setContentPane(cadrePrincipal);
+			leTerrain.startGame();
 			t.stop();
 		}	
 	}
@@ -158,15 +152,6 @@ public class FenetreJeu extends JFrame {
 	public int getDecompte(){
 		return decompte;
 	}
-	
-	/*public boolean finDecompte(){
-		boolean fin =false;
-			if(getDecompte()==0){
-				System.out.println("bbbb");
-				fin=true; 
-			}
-		return fin;		
-	}*/	
 	}
 	
 		
