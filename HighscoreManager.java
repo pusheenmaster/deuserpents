@@ -35,18 +35,18 @@ public class HighscoreManager {
         if (scores.size() == 0) {
 			scores.add(new Score(name, score));
 			test = true;
-			System.out.println("added in zero "  + name);
+			//System.out.println("added in zero "  + name);
 		}
 		if (test == false) {
 			for (int i=0; i< scores.size(); i++) {
-				System.out.println("Name checking:"  + scores.get(i).getNom() + "=" + name);
+				//System.out.println("Name checking:"  + scores.get(i).getNom() + "=" + name);
 				if (scores.get(i).getNom().equals(name)) {
 					oldScore = scores.get(i).getScore();
-					System.out.println("removed" + scores.get(i).getNom());
+					//System.out.println("removed" + scores.get(i).getNom());
 					scores.remove(i);
 					scores.add(new Score(name, oldScore + score));
 					test = true;
-					System.out.println("added "  + name + "oldscore = " + oldScore + "newscore: " + score + "totalfinalscore = "+ (oldScore + score));
+					//System.out.println("added "  + name + "oldscore = " + oldScore + "newscore: " + score + "totalfinalscore = "+ (oldScore + score));
 					break;
 				}
 			}
@@ -54,7 +54,7 @@ public class HighscoreManager {
         
 		if (test == false) {
 			scores.add(new Score(name, score));
-			System.out.println("added  IN LAST CHECK "  + name);
+			//System.out.println("added  IN LAST CHECK "  + name);
 		}
         updateScoreFile();
 	}
