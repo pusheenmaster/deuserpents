@@ -11,6 +11,7 @@ public class FenetreAccueil extends JFrame{
 	private JLabel choixNbrJoueurs;
 	private JPanel centrerChoixNbrJoueurs;		//juste pour centrer le JLabel dans le cadreColonne, sinon il se colle à droite
 	private JPanel nbrJoueurs;
+	private JButton unJoueur;
 	private JButton deuxJoueurs;
 	private JButton troisJoueurs;
 	private JLabel choixNomJoueurs;
@@ -60,6 +61,10 @@ public class FenetreAccueil extends JFrame{
         cadreColonne.add(centrerChoixNbrJoueurs);
         
         nbrJoueurs = new JPanel(new FlowLayout());
+        unJoueur = new JButton("1 joueur");
+		nbrJoueurs.add(unJoueur);
+		unJoueur.addActionListener(new EcouteurUnJoueur());
+        
         deuxJoueurs = new JButton("2 joueurs");
 		nbrJoueurs.add(deuxJoueurs);
 		deuxJoueurs.addActionListener(new EcouteurDeuxJoueurs());
@@ -115,6 +120,19 @@ public class FenetreAccueil extends JFrame{
 		go.addActionListener(new EcouteurGo());
 		
 		this.setVisible(true);
+	}
+	class EcouteurUnJoueur implements ActionListener{			    
+			public void actionPerformed(ActionEvent e){
+				System.out.println("Vous avez choisi de jouer seul.");
+				cadreColonne.add(centrerChoixNomJoueurs);
+				entrerLesNoms.add(nomJ1);
+				entrerLesNoms.remove(nomJ2);
+				entrerLesNoms.remove(nomJ3);
+				cadreColonne.add(entrerLesNoms);
+				cadreColonne.add(centrerContinuer);
+				nombreJoueurs = 1;
+				revalidate();
+			}
 	}
 
 	class EcouteurDeuxJoueurs implements ActionListener{			    
