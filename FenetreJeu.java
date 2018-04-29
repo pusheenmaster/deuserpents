@@ -9,7 +9,7 @@ public class FenetreJeu extends JFrame {
 	private GrilleJeu leTerrain;
 	
 	// Le Manager des HighScores
-	HighscoreManager hm = new HighscoreManager();
+
 	
 	private int nbrJ;
 	private String nom1;
@@ -74,52 +74,51 @@ public class FenetreJeu extends JFrame {
 	///Pour afficher les scores
 	
 	class PanneauScore extends JPanel implements ActionListener{
+			
+			private javax.swing.Timer t;
+			
+		public PanneauScore(){
+				  
+			t = new javax.swing.Timer(70, this);
+			t.start();
+		}		  
 		
-		private javax.swing.Timer t;
-		
-	public PanneauScore(){
-			  
-		t = new javax.swing.Timer(70, this);
-		t.start();
-	}		  
-	
-	private void drawString(Graphics g, String text, int x, int y) {
-        for (String line : text.split("\n"))
-            g.drawString(line, x, y += g.getFontMetrics().getHeight());
-	}
-	
-	public void paintComponent(Graphics g){
-		
-		super.paintComponent(g);
-		
-		g.setFont(new Font("Arial",Font.PLAIN,40));
-		g.setColor(Color.RED);
-		g.drawString (" Scores ", 20, 50);
-		
-		g.setColor(Color.BLACK);
-		g.setFont(new Font("Arial",Font.PLAIN,20));
-		
-		g.drawString (nom1, 20, 150);
-		g.drawString ("Score= "+leTerrain.returnScoreJoueur(1), 20, 180);
-
-		g.drawString (nom2, 20, 250);
-		g.drawString ("Score= "+leTerrain.returnScoreJoueur(2), 20, 280);
-		
-		if(leTerrain.getNbJoueurs()==3){
-			g.drawString (nom3, 20, 350);
-			g.drawString ("Score= "+leTerrain.returnScoreJoueur(3), 20, 380);
+		private void drawString(Graphics g, String text, int x, int y) {
+			for (String line : text.split("\n"))
+				g.drawString(line, x, y += g.getFontMetrics().getHeight());
 		}
 		
-		g.setFont(new Font("Arial",Font.PLAIN,17));
-		drawString (g, "Nombre de fois gagne:", 10, 380);
-		g.setFont(new Font("Arial",Font.PLAIN,14));
-		drawString (g, hm.getHighscoreString(), 20, 410);
-	}	
-	
-	public void actionPerformed(ActionEvent e){
+		public void paintComponent(Graphics g){
+			
+			super.paintComponent(g);
+			
+			g.setFont(new Font("Arial",Font.PLAIN,40));
+			g.setColor(Color.RED);
+			g.drawString (" Scores ", 20, 50);
+			
+			g.setColor(Color.BLACK);
+			g.setFont(new Font("Arial",Font.PLAIN,20));
+			
+			g.drawString (nom1, 20, 150);
+			g.drawString ("Score= "+leTerrain.returnScoreJoueur(1), 20, 180);
+
+			g.drawString (nom2, 20, 250);
+			g.drawString ("Score= "+leTerrain.returnScoreJoueur(2), 20, 280);
+			
+			if(leTerrain.getNbJoueurs()==3){
+				g.drawString (nom3, 20, 350);
+				g.drawString ("Score= "+leTerrain.returnScoreJoueur(3), 20, 380);
+			}
+			
+			g.setFont(new Font("Arial",Font.PLAIN,17));
+			drawString (g, "Nombre de fois gagne:", 10, 380);
+			g.setFont(new Font("Arial",Font.PLAIN,14));
+			drawString (g, GrilleJeu.getHm().getHighscoreString(), 20, 410);
+		}	
 		
-		this.repaint();
-	}
+		public void actionPerformed(ActionEvent e){
+			this.repaint();
+		}
 	}
 	
 	
@@ -143,7 +142,7 @@ public class FenetreJeu extends JFrame {
 	
 		g.setFont(new Font("Arial",Font.PLAIN,70));
 		g.setColor(Color.RED);
-		g.drawString (""+decompte+"!", 40, 100);
+		g.drawString (""+decompte+" !", 40, 100);
 		decompte--;
 	}
 	

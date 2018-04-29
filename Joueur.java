@@ -147,6 +147,10 @@ public class Joueur {
 		score++;
 	}
 	
+	public void setZero(){
+		score = 0;
+	}
+	
 	public String getNom(){
 		return nom;
 	}			

@@ -5,6 +5,7 @@ import java.util.*;
 
 public class GrilleJeu extends JPanel implements KeyListener, ActionListener{
 	
+	public static HighscoreManager hm = new HighscoreManager();
 	private final Point[][] tab; 
 	private int colonne = 60;
 	private int ligne = 60;
@@ -226,6 +227,11 @@ public class GrilleJeu extends JPanel implements KeyListener, ActionListener{
 			collisionAdansB(r2, r3);
 			collisionAdansB(r3, r2);
 		}
+		
+		if (finDuJeu()) {
+			hm.addScore(nomJoueurWin(),1);
+			remettreZero();			
+		}
 			
 		this.repaint();
 	}
@@ -279,9 +285,18 @@ public class GrilleJeu extends JPanel implements KeyListener, ActionListener{
 		if(nbrJoueur==3){
 			if(r3.getScore()==5)
 				end=true;
-		}		
+		}
 		return end;
 	}
+	
+	public void remettreZero(){
+		r1.setZero();
+		r2.setZero();
+		if(nbrJoueur == 3) r3.setZero();
+		
+	}
+	
+	public static HighscoreManager getHm() {return hm;}
 	
 	public String nomJoueurWin(){
 		String gagnant = "";
@@ -289,8 +304,9 @@ public class GrilleJeu extends JPanel implements KeyListener, ActionListener{
 			gagnant = r1.getNom();
 		if(r2.getScore()==5)
 			gagnant = r2.getNom();	
+		if(nbrJoueur==3){
 		if(r3.getScore()==5)
-			gagnant = r3.getNom();
+			gagnant = r3.getNom(); }
 		return gagnant;
 	}		
 			
